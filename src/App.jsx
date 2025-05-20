@@ -32,8 +32,12 @@ function App() {
     setCount(count + 1);
   }
 
-  function MyButton(props) {
-    return <button onClick={props.onClick}>Кликнули {props.count} раз</button>;
+  function MyButton({ children, onClick, count }) {
+    return (
+      <button onClick={onClick}>
+        Кликнули {count} раз {children}
+      </button>
+    );
   }
 
   function MyUser() {
@@ -48,8 +52,12 @@ function App() {
   return (
     <>
       <MyUser />
-      <MyButton count={count} onClick={handleClick} />
-      <MyButton count={count} onClick={handleClick} />
+      <MyButton count={count} onClick={handleClick}>
+        (Я кнопка)
+      </MyButton>
+      <MyButton count={count} onClick={handleClick}>
+        (Я кнопка)
+      </MyButton>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
